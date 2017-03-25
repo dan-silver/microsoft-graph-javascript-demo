@@ -5,7 +5,7 @@ async function queryMicrosoftGraph() {
     const client = await GraphClient();
 
     return await client
-        .api("/me/trendingAround")
+        .api("/me")
         .version("beta")
         .get()
         .then((res) => {
@@ -74,4 +74,4 @@ async function sendMail() {
         });
 }
 
-sendMail();
+// sendMail();
