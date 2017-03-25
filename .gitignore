@@ -1,2 +1,5 @@
 secrets.*
 node_modules/
+**/*.js.map
+**/*.d.ts
+**/*.js
