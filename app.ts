@@ -16,7 +16,7 @@ async function queryMicrosoftGraph() {
         });
 }
 
-// queryMicrosoftGraph();
+queryMicrosoftGraph();
 
 
 
