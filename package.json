@@ -1,0 +1,18 @@
+{
+  "name": "microsoft-graph-javascript-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^2.2.1",
+    "node-fetch": "^1.6.3",
+    "@microsoft/microsoft-graph-client": "^0.4.1",
+    "@microsoft/microsoft-graph-types": "^0.4.1"
+  }
+}
