@@ -6,7 +6,10 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/*.js.map": true,
-        "**/*.js": true,
+        "GraphHelper.js": true,
+        "secrets.example.js": true,
+        "secrets.js": true,
+        "app.js": true,
         "**/*.d.ts": true
     }
 }

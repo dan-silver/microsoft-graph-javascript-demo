@@ -1,4 +1,4 @@
-import { MicrosoftAppRefreshToken, MicrosoftAppSecret, MicrosoftAppID } from './secrets'
+import { MicrosoftAppRefreshToken, MicrosoftAppSecret, MicrosoftAppID, MicrosoftAppUrl } from './secrets'
 import { Client } from '@microsoft/microsoft-graph-client'
 
 import fetch from 'node-fetch';
@@ -18,8 +18,8 @@ export async function GraphClient() {
 export async function getAccessToken() {
     let body = {
         client_id: MicrosoftAppID,
-        scope: "openid profile User.ReadWrite User.ReadBasic.All Mail.ReadWrite Mail.Send Mail.Send.Shared Calendars.ReadWrite Calendars.ReadWrite.Shared Contacts.ReadWrite Contacts.ReadWrite.Shared MailboxSettings.ReadWrite Files.ReadWrite Files.ReadWrite.All Notes.Create Notes.ReadWrite.All People.Read Sites.ReadWrite.All Tasks.ReadWrite",
-        redirect_uri: "http://localhost:7071",
+        scope: "openid profile Directory.ReadWrite.All User.ReadWrite.All Mail.ReadWrite Mail.Send Mail.Send.Shared Calendars.ReadWrite Calendars.ReadWrite.Shared Contacts.ReadWrite Contacts.ReadWrite.Shared MailboxSettings.ReadWrite Files.ReadWrite Files.ReadWrite.All Notes.Create Notes.ReadWrite.All People.Read Sites.ReadWrite.All Tasks.ReadWrite",
+        redirect_uri: MicrosoftAppUrl,
         grant_type: "refresh_token",
         client_secret: MicrosoftAppSecret,
         refresh_token: MicrosoftAppRefreshToken

@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chance": "^1.0.6",
     "typescript": "^2.2.1",
     "node-fetch": "^1.6.3",
     "@microsoft/microsoft-graph-client": "^0.4.1",

@@ -20,6 +20,8 @@ queryMicrosoftGraph();
 
 
 
+// *** app-javascript.js
+
 
 
 async function findUsers() {
@@ -33,7 +35,7 @@ async function findUsers() {
             // console.log(res)
             let users:User[] = res.value;
             for (let user of users) {
-                console.log(user.displayName, user.mail)
+                // console.log(user.displayName, user.mail)
             }
         }).catch((error) => {
             debugger;
