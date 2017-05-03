@@ -15,6 +15,10 @@ export async function GraphClient() {
     });
 }
 
+export interface CollectionResponse<t>{
+    value: t[]
+}
+
 export async function getAccessToken() {
     let body = {
         client_id: MicrosoftAppID,

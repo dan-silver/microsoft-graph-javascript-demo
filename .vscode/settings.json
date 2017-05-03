@@ -10,6 +10,7 @@
         "secrets.example.js": true,
         "secrets.js": true,
         "app.js": true,
-        "**/*.d.ts": true
+        "**/*.d.ts": true,
+        "extensions-importer.js": true
     }
 }

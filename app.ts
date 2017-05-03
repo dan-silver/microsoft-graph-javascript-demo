@@ -1,4 +1,4 @@
-import { GraphClient } from "./GraphHelper";
+import { GraphClient, CollectionResponse } from "./GraphHelper";
 import { User, Message } from "@microsoft/microsoft-graph-types"
 
 async function queryMicrosoftGraph() {
@@ -16,7 +16,7 @@ async function queryMicrosoftGraph() {
         });
 }
 
-queryMicrosoftGraph();
+// queryMicrosoftGraph();
 
 
 
@@ -30,12 +30,9 @@ async function findUsers() {
     return await client
         .api("/users")
         .get()
-        .then((res) => {
-            debugger;
-            // console.log(res)
-            let users:User[] = res.value;
-            for (let user of users) {
-                // console.log(user.displayName, user.mail)
+        .then((response:CollectionResponse<User>) => {
+            for (let user of response.value) {
+                
             }
         }).catch((error) => {
             debugger;
@@ -59,7 +56,7 @@ let message:Message = {
     }],
     body: {
         content: "<h1>Microsoft Graph TypeScript Sample</h1>Try modifying the sample",
-        contentType: "html" // ***** strongly typed enum - try changing
+        contentType: "html"
     }
 }
 

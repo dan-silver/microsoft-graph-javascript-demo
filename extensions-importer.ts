@@ -1,40 +1,26 @@
-import { GraphClient } from "./GraphHelper";
+import * as Chance from 'chance';
 import { User, WorkbookRange, OpenTypeExtension } from "@microsoft/microsoft-graph-types"
 
-import * as Chance from 'chance';
+import { GraphClient } from "./GraphHelper";
+import { SampleUsers } from "./sample-users";
 
-let chance = new Chance();
-
-// create some sample data
 
 const driveItemId = "01IN3FJC66ZAPNNUNHFFH2XYV36IFGFCGC";
 // https://mod195910-my.sharepoint.com/personal/admin_mod195910_onmicrosoft_com/_layouts/15/WopiFrame.aspx?sourcedoc={d61ec8de-a7d1-4f29-abe2-bbf20a6288c2}&action=editnew
 // admin@MOD195910.onmicrosoft.com
 
-let sampleUsers = [
-    "Adams@MOD195910.onmicrosoft.com",
-    "AdeleV@MOD195910.onmicrosoft.com",
-    "AlexW@MOD195910.onmicrosoft.com",
-    "AllanD@MOD195910.onmicrosoft.com",
-    "Baker@MOD195910.onmicrosoft.com",
-    "BenW@MOD195910.onmicrosoft.com",
-    "BrianJ@MOD195910.onmicrosoft.com",
-    "ChristieC@MOD195910.onmicrosoft.com",
-    "Crystal@MOD195910.onmicrosoft.com"
-]
-
 
 async function insertSampleData() {
     const client = await GraphClient();
+    const chance = new Chance();
+
 
     const sampleData:WorkbookRange = {
-        values: sampleUsers.map((user) =>
+        values: SampleUsers.map((user) =>
             [
                 user,
                 chance.twitter(),
-                chance.gender(),
                 chance.age(),
-                chance.name(),
                 chance.city()
             ]
         )
@@ -48,7 +34,7 @@ async function insertSampleData() {
 }
 
 // insertSampleData();
-
+// 
 
 
 
@@ -58,9 +44,7 @@ async function insertSampleData() {
 
 interface UserDetailsExtension extends OpenTypeExtension {
     twitter: string
-    gender: string
     age: number
-    name: string
     city: string
 }
 
@@ -89,10 +73,8 @@ async function addUserDetails() {
         let extension:UserDetailsExtension = {
             extensionName: "userDetailsExt",
             twitter: user[1],
-            gender: user[2],
-            age: user[3],
-            name: user[4],
-            city: user[5]
+            age: user[2],
+            city: user[3]
         };
 
 
@@ -105,7 +87,6 @@ async function addUserDetails() {
                     debugger;
                 })
         );
-        
     }
 
     Promise.all(saveExtensionDataPromises).then(() => {
@@ -113,10 +94,18 @@ async function addUserDetails() {
     });
 }
 
-// addUserDetails();
+addUserDetails();
 
 // View extension data in graph explorer
 // https://graph.microsoft.com/beta/users/Adams@MOD195910.onmicrosoft.com?$select=id,displayName,mail,mobilePhone&$expand=extensions
+
+
+
+
+
+
+
+
 
 
 
@@ -137,7 +126,7 @@ async function removeAllExtensions() {
 
     let removeExtensionPromises = [];
 
-    for (let user of sampleUsers) {
+    for (let user of SampleUsers) {
         removeExtensionPromises.push(
             client
                 .api(`/users/${user}/extensions`)

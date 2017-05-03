@@ -4,7 +4,7 @@
         "target": "es6",
         "noImplicitAny": false,
         "sourceMap": true,
-        "allowJs": false
+        "allowJs": true
     },
     "exclude": [
         "node_modules/"
