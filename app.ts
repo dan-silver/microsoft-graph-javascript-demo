@@ -51,7 +51,7 @@ let message:Message = {
     subject: "Microsoft Graph TypeScript Sample",
     toRecipients: [{
         emailAddress: {
-            address: "dansil@microsoft.com"
+            address: "example@example.com"
         }
     }],
     body: {
